@@ -18,15 +18,19 @@ export const modelo = {
 
     authEmailAndPassword: async function(objetoUser) {  
       await firebase.auth().createUserWithEmailAndPassword(objetoUser.email, objetoUser.password)
-      .then((res) => {
-        alert('successfully registered') 
-        controlador.detecthash("#/home");
-  
-      }).catch((err) => {
-        alert('please verify your information and try again');
-      });
-      
+      controlador.detecthash("#/home");
+
     },
+
+    loginEmailAndPassword: async function (objetoLogin) {
+      try{
+        await firebase.auth().signInWithEmailAndPassword(objetoLogin.email,objetoLogin.password);
+        controlador.detecthash("#/home");
+      } catch (e) {
+        alert('please, check your information');
+      }
+    },
+
 
     authCuentaFacebook: async function (){
       const providerFacebook = new firebase.auth.FacebookAuthProvider();
@@ -48,6 +52,11 @@ export const modelo = {
       });
     },
 
+    signOut: async function() {  
+      await firebase.auth().signOut()
+      controlador.detecthash("#/Login");
+
+    },
 
     agregaMarcador: (nuevoMarcador) => {
     return modelo.marcadores.push(nuevoMarcador)

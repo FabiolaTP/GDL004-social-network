@@ -1,25 +1,31 @@
 
 export default () =>{
     const viewLogin = `
+
+
     <div class="logoNeek">
         <img src="images/Logo Neek.png" alt="Logo neek" width="180">
     </div>
     
-    <input 
-        type="email" 
-        id="email"
-        placeholder="Email:">
-    </input>
-    <input 
-        type="password" 
-        id="password" 
-      placeholder="Password:">
-    </input>
+        <input 
+            name="email"
+            type="email" 
+            id="email"
+            placeholder="Email:">
+        </input>
+        <input 
+            name="password"
+            type="password" 
+            id="password" 
+        placeholder="Password:">
+        </input>
+   
     `;
-
+//Se crea boton Login
     const button = document.createElement('button');
         button.innerHTML="Login";
         button.setAttribute('id', 'bottonLogin');
+        button.setAttribute('name', 'button');
         
 
     
@@ -60,16 +66,17 @@ export default () =>{
     
      
 
-    const divcontainer = document.createElement('div');
-        divcontainer.classList.add('loginPage');
-        divcontainer.innerHTML= viewLogin;
-        divcontainer.appendChild(button);
-        divcontainer.appendChild(textsignup);
-        divcontainer.appendChild(divImgsFBGoogle);
-        divcontainer.appendChild(text);
+    const formcontainer = document.createElement('form');
+        formcontainer.setAttribute('id', 'formLogin');
+        formcontainer.classList.add('loginPage');
+        formcontainer.innerHTML= viewLogin;
+        formcontainer.appendChild(button);
+        formcontainer.appendChild(textsignup);
+        formcontainer.appendChild(divImgsFBGoogle);
+        formcontainer.appendChild(text);
         
 
-    return divcontainer;
+    return formcontainer;
 
 };
 
